@@ -8,31 +8,16 @@ import org.apache.logging.log4j.Logger;
 
 public class Main {
 
-    private static final Logger logger = LogManager.getLogger();
 
     public static void main(String[] args) {
-        logger.info("** Starting Maze Runner");
-        try {
-            logger.trace("**** Reading the maze from file " + args[1]);
-            BufferedReader reader = new BufferedReader(new FileReader(args[1]));
-            String line;
-            if (args[0].equals("-i")) {
-            while ((line = reader.readLine()) != null) {
-                for (int idx = 0; idx < line.length(); idx++) {
-                    if (line.charAt(idx) == '#') {
-                        logger.info("WALL ");
-                    } else if (line.charAt(idx) == ' ') {
-                        logger.info("PASS ");
-                    }
-                }
-                logger.info(System.lineSeparator());
-            }
-            }
-        } catch(Exception e) {
-            logger.error("/!\\ An error has occured /!\\");
+        Maze maze = new Maze();
+        if (args[0].equals("-i")) {
+            maze.loadMaze(args);
         }
-        logger.info("**** Computing path");
-        logger.info("PATH NOT COMPUTED");
-        logger.info("** End of MazeRunner");
+        
+        Explore explore = new Explore(maze);
+        if (args[2].equals("-p")) {
+            explore.checkPath(args);
+        }
     }
 }
