@@ -14,10 +14,11 @@ public class Main {
         if (args[0].equals("-i")) {
             maze.loadMaze(args);
         }
-        
+
         Explore explore = new Explore(maze);
         if (args[2].equals("-p")) {
             explore.checkPath(args);
+            
         }
     }
 }
