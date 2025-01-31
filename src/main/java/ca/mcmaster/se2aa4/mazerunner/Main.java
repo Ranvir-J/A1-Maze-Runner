@@ -5,20 +5,20 @@ import java.io.File;
 import java.io.FileReader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import java.util.ArrayList;
 
 public class Main {
 
 
     public static void main(String[] args) {
+        Player player = new Player();
         Maze maze = new Maze();
-        if (args[0].equals("-i")) {
-            maze.loadMaze(args);
-        }
 
-        Explore explore = new Explore(maze);
-        if (args[2].equals("-p")) {
-            explore.checkPath(args);
-            
-        }
+        player.PlayerFlags(args);
+        maze.InitializeMaze(args);
+        maze.displayMazeArray();
+
+
+
     }
 }

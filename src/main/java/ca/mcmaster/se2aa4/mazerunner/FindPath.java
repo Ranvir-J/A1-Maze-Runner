@@ -6,10 +6,18 @@ import java.io.FileReader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public abstract interface Path {
+public class FindPath implements Path {
 
-	public abstract void FindCorrectPath();
+	public void FindCorrectPath() {
 
-	public abstract void CheckGivenPath();
+	}
+
+
+	/**
+	 * @see Path#CheckGivenPath()
+	 */
+	public void CheckGivenPath() {
+
+	}
 
 }
