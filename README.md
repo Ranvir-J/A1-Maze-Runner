@@ -1,5 +1,5 @@
 # Assignment A1 - Maze Runner
-
+ 
 - Original author: Dr. [Sébastien Mosser](https://mosser.github.io)
 - Version: 2024.01
 - Context: McMaster University > Engineering > Computing & Software > SFWRENG > 2AA4
