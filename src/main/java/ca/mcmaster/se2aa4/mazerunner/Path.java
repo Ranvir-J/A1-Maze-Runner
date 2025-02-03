@@ -9,6 +9,6 @@ import java.util.ArrayList;
 
 public abstract class Path {
 
-	abstract ArrayList<String> navigateMaze(int[] startingCoordinates,ArrayList<ArrayList<String>> mazeArray, int rows, int cols);
+	abstract ArrayList<String> navigateMaze(int[] startingCoordinates,ArrayList<ArrayList<String>> mazeArray, int rows, int cols, String path);
 
 }

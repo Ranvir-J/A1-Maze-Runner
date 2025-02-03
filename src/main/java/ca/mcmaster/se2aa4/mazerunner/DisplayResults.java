@@ -56,7 +56,7 @@ public class DisplayResults {
     }
 
     public void showResults(String inputFlag, String checkPathFlag, int startingXCoordinate, int startingYCoordinate, ArrayList<ArrayList<String>> mazeArray,
-    int rows, int cols) {
+    int rows, int cols, String path) {
         final Logger logger = LogManager.getLogger();
         FindPath findPath = new FindPath();
         CheckPath checkPath = new CheckPath();
@@ -64,7 +64,7 @@ public class DisplayResults {
 
         if(inputFlag.equals("-i")) {
             logger.info("Finding path");
-            ArrayList<String> unformattedPath = (findPath.navigateMaze(startingCoordinates, mazeArray, rows, cols));
+            ArrayList<String> unformattedPath = (findPath.navigateMaze(startingCoordinates, mazeArray, rows, cols, "N/A"));
             showCanonicalPath(unformattedPath);
             showFactorizedPath(unformattedPath);
         }
@@ -73,7 +73,8 @@ public class DisplayResults {
         }
 
         if(checkPathFlag.equals("-p")) {
-            checkPath.navigateMaze(startingCoordinates, mazeArray, rows, cols);
+            
+            System.out.println(checkPath.navigateMaze(startingCoordinates, mazeArray, rows, cols, path).get(0));
         }
         else {
             return;

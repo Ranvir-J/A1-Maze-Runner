@@ -19,7 +19,6 @@ public class Main {
         maze.InitializeMaze(args);
         maze.displayMazeArray();
         displayResults.showResults(player.getInputFlag(), player.getCheckPathFlag(), maze.getStartingXCoordinate(), maze.getStartingYCoordinate(), maze.getMazeArray(),
-        maze.getRows(),maze.getCols());
-
+        maze.getRows(),maze.getCols(), player.getGivenMazePath());
     }
 }

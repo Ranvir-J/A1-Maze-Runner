@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class FindPath extends Path {
 
     @Override
-    ArrayList<String> navigateMaze(int[] startingCoordinates, ArrayList<ArrayList<String>> mazeArray, int rows, int cols) {
+    ArrayList<String> navigateMaze(int[] startingCoordinates, ArrayList<ArrayList<String>> mazeArray, int rows, int cols, String path) {
         final Logger logger = LogManager.getLogger();
         logger.info(mazeArray);
 
