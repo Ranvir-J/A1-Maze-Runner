@@ -23,26 +23,35 @@ public class DisplayResults {
                 canonicalString += " " + unformattedPath.get(i);
             }
         }
-        System.out.println(canonicalString);
+        System.out.println(canonicalString + "\n");
     }
 
     public void showFactorizedPath(ArrayList<String> unformattedPath) {
         String factorizedString = "";
-        int counter = 0;
+        int counter = 1;
 
         for(int i = 1;i < unformattedPath.size(); i++) {
-            if(unformattedPath.get(i).equals(unformattedPath.get(i-1))){
+
+            if(unformattedPath.get(i).equals(unformattedPath.get(i-1)) && (i == (unformattedPath.size()-1))){
+                counter += 1;
+                factorizedString += counter + unformattedPath.get(i-1) + " ";
+            }
+            else if(unformattedPath.get(i).equals(unformattedPath.get(i-1))){
                 counter += 1;
             }
-            else if(!unformattedPath.get(i).equals(unformattedPath.get(i-1)) && (counter > 0)){
-                factorizedString += " " + counter + unformattedPath.get(i-1);
-                counter = 0;
+            else if(!unformattedPath.get(i).equals(unformattedPath.get(i-1)) && (counter > 1)){
+                factorizedString += counter + unformattedPath.get(i-1) + " ";
+                counter = 1;
+            }
+            else if(!unformattedPath.get(i).equals(unformattedPath.get(i-1)) && (counter <= 1) && (i == (unformattedPath.size()-1))){
+                factorizedString += unformattedPath.get(i-1) + " ";
+                factorizedString += unformattedPath.get(i);
             }
             else {
-                factorizedString += " " + unformattedPath.get(i);
+                factorizedString += unformattedPath.get(i-1) + " ";
             }
         }
-        System.out.println(factorizedString);
+        System.out.println(factorizedString + "\n");
 
     }
 
