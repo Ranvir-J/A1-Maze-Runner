@@ -23,21 +23,16 @@ public class Player {
     public void setGivenMazePath(String givenMazePath) {this.givenMazePath = givenMazePath;}
 
     public void PlayerFlags(String[] args) {
-        if(args[0].equals("-i")) {
+        try {
             setInputFlag(args[0]);
         }
-        else {
-            logger.error("Did not input -i flag. Exiting program.");
-            System.exit(1);
+        catch(ArrayIndexOutOfBoundsException e) {
+            ;
         }
         try {
-            if(args[2] != null) {
-                setCheckPathFlag(args[2]);
-                if (args[3] != null) {
-                    setGivenMazePath(args[3]);
-                }
-
-            }}
+            setCheckPathFlag(args[2]);
+            setGivenMazePath(args[3]);
+            }
         catch(ArrayIndexOutOfBoundsException e) {
             ;
         }

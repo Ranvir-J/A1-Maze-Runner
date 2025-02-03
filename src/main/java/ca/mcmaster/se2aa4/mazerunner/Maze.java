@@ -57,9 +57,9 @@ public class Maze {
                 ArrayList<String> arrayRow = new ArrayList<>();
                 for (int idx = 0; idx < line.length(); idx++) {
                     if (line.charAt(idx) == '#') {
-                        arrayRow.add("#");
+                        arrayRow.add("WALL");
                     } else if (line.charAt(idx) == ' ') {
-                        arrayRow.add(" ");
+                        arrayRow.add("PASS");
                         if ((getStartingXCoordinate() == -1) && (idx == 0)) {
                             setStartingXCoordinate(getRows());
                         }
@@ -74,6 +74,7 @@ public class Maze {
         catch(IOException e) {
             logger.error("/!\\ An error has occured with initializing the maze/!\\");
         }
+        logger.info(cols + " " + rows);
         }
         
 }

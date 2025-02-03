@@ -3,9 +3,73 @@ package ca.mcmaster.se2aa4.mazerunner;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.ArrayList;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class DisplayResults {
+
+    public void showCanonicalPath(ArrayList<String> unformattedPath) {
+        String canonicalString = "";
+
+        canonicalString += unformattedPath.get(0);
+
+        for(int i = 1;i < unformattedPath.size(); i++) {
+            if(unformattedPath.get(i).equals(unformattedPath.get(i-1))){
+                canonicalString += unformattedPath.get(i);
+            }
+            else {
+                canonicalString += " " + unformattedPath.get(i);
+            }
+        }
+        System.out.println(canonicalString);
+    }
+
+    public void showFactorizedPath(ArrayList<String> unformattedPath) {
+        String factorizedString = "";
+        int counter = 0;
+
+        for(int i = 1;i < unformattedPath.size(); i++) {
+            if(unformattedPath.get(i).equals(unformattedPath.get(i-1))){
+                counter += 1;
+            }
+            else if(!unformattedPath.get(i).equals(unformattedPath.get(i-1)) && (counter > 0)){
+                factorizedString += " " + counter + unformattedPath.get(i-1);
+                counter = 0;
+            }
+            else {
+                factorizedString += " " + unformattedPath.get(i);
+            }
+        }
+        System.out.println(factorizedString);
+
+    }
+
+    public void showResults(String inputFlag, String checkPathFlag, int startingXCoordinate, int startingYCoordinate, ArrayList<ArrayList<String>> mazeArray,
+    int rows, int cols) {
+        final Logger logger = LogManager.getLogger();
+        FindPath findPath = new FindPath();
+        CheckPath checkPath = new CheckPath();
+        int[] startingCoordinates = {startingXCoordinate, startingYCoordinate};
+
+        if(inputFlag.equals("-i")) {
+            logger.info("Finding path");
+            ArrayList<String> unformattedPath = (findPath.navigateMaze(startingCoordinates, mazeArray, rows, cols));
+            showCanonicalPath(unformattedPath);
+            showFactorizedPath(unformattedPath);
+        }
+        else {
+            return;
+        }
+
+        if(checkPathFlag.equals("-p")) {
+            checkPath.navigateMaze(startingCoordinates, mazeArray, rows, cols);
+        }
+        else {
+            return;
+        }
+
+    }
 
 }

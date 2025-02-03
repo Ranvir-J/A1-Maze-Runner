@@ -5,11 +5,10 @@ import java.io.File;
 import java.io.FileReader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import java.util.ArrayList;
 
-public abstract interface Path {
+public abstract class Path {
 
-	public abstract void FindCorrectPath();
-
-	public abstract void CheckGivenPath();
+	abstract ArrayList<String> navigateMaze(int[] startingCoordinates,ArrayList<ArrayList<String>> mazeArray, int rows, int cols);
 
 }

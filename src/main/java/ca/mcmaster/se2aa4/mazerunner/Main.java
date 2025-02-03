@@ -13,12 +13,13 @@ public class Main {
     public static void main(String[] args) {
         Player player = new Player();
         Maze maze = new Maze();
+        DisplayResults displayResults = new DisplayResults();
 
         player.PlayerFlags(args);
         maze.InitializeMaze(args);
         maze.displayMazeArray();
-
-
+        displayResults.showResults(player.getInputFlag(), player.getCheckPathFlag(), maze.getStartingXCoordinate(), maze.getStartingYCoordinate(), maze.getMazeArray(),
+        maze.getRows(),maze.getCols());
 
     }
 }
