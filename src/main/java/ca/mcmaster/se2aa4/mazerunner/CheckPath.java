@@ -8,10 +8,10 @@ import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class CheckPath extends Path{
+public class CheckPath implements PathStrategy{
 
     @Override
-    ArrayList<String> navigateMaze(int[] startingCoordinates, ArrayList<ArrayList<String>> mazeArray, int rows, int cols, String path) {
+    public ArrayList<String> navigateMaze(int[] startingCoordinates, ArrayList<ArrayList<String>> mazeArray, int rows, int cols, String path) {
         ArrayList<String> result = new ArrayList<>();
         ExplorePath explorePath = new ExplorePath();
   

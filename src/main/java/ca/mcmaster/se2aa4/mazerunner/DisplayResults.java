@@ -55,31 +55,25 @@ public class DisplayResults {
 
     }
 
-    public void showResults(String inputFlag, String checkPathFlag, int startingXCoordinate, int startingYCoordinate, ArrayList<ArrayList<String>> mazeArray,
-    int rows, int cols, String path) {
-        final Logger logger = LogManager.getLogger();
-        FindPath findPath = new FindPath();
-        CheckPath checkPath = new CheckPath();
-        int[] startingCoordinates = {startingXCoordinate, startingYCoordinate};
+    public void showResults(String inputFlag, String checkPathFlag, int startingXCoordinate, int startingYCoordinate,
+                        ArrayList<ArrayList<String>> mazeArray, int rows, int cols, String path) {
 
-        if(inputFlag.equals("-i")) {
-            logger.info("Finding path");
-            ArrayList<String> unformattedPath = (findPath.navigateMaze(startingCoordinates, mazeArray, rows, cols, "N/A"));
-            showCanonicalPath(unformattedPath);
-            showFactorizedPath(unformattedPath);
-        }
-        else {
-            return;
-        }
+    final Logger logger = LogManager.getLogger();
+    int[] startingCoordinates = {startingXCoordinate, startingYCoordinate};
 
-        if(checkPathFlag.equals("-p")) {
-            
-            System.out.println(checkPath.navigateMaze(startingCoordinates, mazeArray, rows, cols, path).get(0));
-        }
-        else {
-            return;
-        }
-
+    if (inputFlag.equals("-i")) {
+        logger.info("Finding path");
+        PathStrategy pathStrategy = PathFactory.getPathStrategy("FIND");
+        ArrayList<String> unformattedPath = pathStrategy.navigateMaze(startingCoordinates, mazeArray, rows, cols, "N/A");
+        showCanonicalPath(unformattedPath);
+        showFactorizedPath(unformattedPath);
     }
+
+    if (checkPathFlag.equals("-p")) {
+        PathStrategy checkStrategy = PathFactory.getPathStrategy("CHECK");
+        System.out.println(checkStrategy.navigateMaze(startingCoordinates, mazeArray, rows, cols, path).get(0));
+    }
+}
+
 
 }

@@ -7,10 +7,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
 
-public class FindPath extends Path {
+public class FindPath implements PathStrategy {
 
     @Override
-    ArrayList<String> navigateMaze(int[] startingCoordinates, ArrayList<ArrayList<String>> mazeArray, int rows, int cols, String path) {
+    public ArrayList<String> navigateMaze(int[] startingCoordinates, ArrayList<ArrayList<String>> mazeArray, int rows, int cols, String path) {
         final Logger logger = LogManager.getLogger();
         logger.info(mazeArray);
 
