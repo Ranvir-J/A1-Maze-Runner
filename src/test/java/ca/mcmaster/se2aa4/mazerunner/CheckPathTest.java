@@ -45,5 +45,23 @@ public class CheckPathTest {
         assertEquals(expected,checkPath.navigateMaze(startingCoordinates, mazeArray, 5, 5, "FFFF"));
     }
 
+    @Test
+    public void checkNavigateMazeTwo() {
+        CheckPath checkPath = new CheckPath();
+        int[] startingCoordinates = {3,0};
+        ArrayList<String> expected = new ArrayList<>();
+        expected.add("Did not reach the end of the maze");
+        assertEquals(expected,checkPath.navigateMaze(startingCoordinates, mazeArray, 5, 5, "FFF"));
+    }
+
+    @Test
+    public void checkNavigateMazeThree() {
+        CheckPath checkPath = new CheckPath();
+        int[] startingCoordinates = {3,0};
+        ArrayList<String> expected = new ArrayList<>();
+        expected.add("Path invalid. Hit a wall.");
+        assertEquals(expected,checkPath.navigateMaze(startingCoordinates, mazeArray, 5, 5, "RFRFRFFRFFF"));
+    }
+
 
 }

@@ -20,13 +20,18 @@ public class DisplayResultsTest {
         displayResults.showCanonicalPath(unformattedPath);
 
         assertEquals("FFF RR L R\n\n" , outContent.toString());
+    }
+    @Test
+    public void checkDisplayFormattingTwo() {
+        ArrayList<String> unformattedPath = new ArrayList<>();
+        Collections.addAll(unformattedPath, "F","F","F","R","R","L","R");
 
-        outContent = new ByteArrayOutputStream();
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
-
+        
+        DisplayResults displayResults = new DisplayResults();
         displayResults.showFactorizedPath(unformattedPath);
 
         assertEquals("3F 2R L R\n\n", outContent.toString());
-
     }
 }
